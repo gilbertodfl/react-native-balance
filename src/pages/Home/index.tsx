@@ -32,7 +32,6 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <Header name="Gilberto!!"/>
-      <Text>Home!</Text>
       <Balance saldo="3222,00" gastos="2828,33"/>
       <Actions />
       <Text style={styles.title}>Extrato</Text>
