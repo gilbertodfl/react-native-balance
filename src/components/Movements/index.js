@@ -1,6 +1,7 @@
 
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
+import { MotiView, MotiText, AnimatePresence } from 'moti'
 export default function Movements({ data }) {
   const [showValue, setShowValue] = React.useState(false);
   return (
@@ -8,17 +9,33 @@ export default function Movements({ data }) {
     <TouchableOpacity style={style.container} onPress={() => setShowValue(!showValue)} activeOpacity={0.8}>
       <Text style={style.date}>{data.date}</Text>
     <View style={style.content}>
-                <Text style={style.label}>{data.label}</Text>      
+                <MotiText style={style.label}>{data.label}</MotiText>      
       {showValue ? (
-
-
-          <Text style={data.type === 1 ? style.income : style.expenses}>
+        <AnimatePresence exitBeforeEnter>
+          <MotiText style={data.type === 1 ? style.income : style.expenses}
+            from={{
+              translateX: 100,
+            }}
+            animate={{
+              translateX: 0,
+            }}
+            transition={{
+                type: 'timing',
+                duration:900,
+                
+            }}
+          
+          >
             {data.type === 1 ? `R$ ` : `R$-`}{data.value}
-          </Text>
-    
+          </MotiText>
+        </AnimatePresence>
 
       ) : (
-        <View style={style.skeleton}></View>
+        <AnimatePresence exitBeforeEnter  >
+          <MotiView style={style.skeleton}
+            from={{ opacity:0}} animate={{ opacity: 1}} transition={{ type:'timing' , duration: 500, delay: 300}}
+          ></MotiView>
+        </AnimatePresence >
       )
       }
     </View>      

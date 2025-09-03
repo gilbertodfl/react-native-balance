@@ -3,6 +3,9 @@ import React, { Component } from 'react'
 
 // https://icons.expo.fyi/Index
 import { Feather }  from '@expo/vector-icons'
+
+import { MotiView, MotiText } from 'moti'
+
 const statusBarHeight = StatusBar.currentHeight ?
       StatusBar.currentHeight 
       :StatusBar.currentHeight + 22
@@ -12,12 +15,41 @@ export default function Header({name}) {
 
     return (
       <View style={styles.container}>
-        <View style={styles.content}>
-          <Text style={styles.userName}>{name}</Text>
+        <MotiView style={styles.content}
+          from={{
+              translateY: -150,
+              opacity: 0,
+          }}
+          animate={{
+            translateY: 0,
+            opacity: 1,
+          }}
+          transition={{
+            type: "timing",
+            duration: 1800,
+            delay: 2
+          }}
+        
+        >
+          <MotiText style={styles.userName}
+            from={{
+              translateX: -300
+            }}
+            animate={{
+              translateX: 0,
+
+            }}
+            transition={{
+                type: "timing",
+                duration: 800,
+                delay: 800
+            }}
+          >
+            {name}</MotiText>
           <TouchableOpacity activeOpacity={0.9} style={styles.buttonUser}>
             <Feather name="user" size={27} color="#fff"/>
           </TouchableOpacity>
-        </View>
+        </MotiView>
         
       </View>
     )
