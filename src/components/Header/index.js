@@ -1,14 +1,14 @@
-import { Text, View, StyleSheet, StatusBar, Touchable, TouchableOpacity } from 'react-native'
-import React, { Component } from 'react'
+import { StatusBar, StyleSheet, TouchableOpacity, View } from 'react-native'
 
 // https://icons.expo.fyi/Index
-import { Feather }  from '@expo/vector-icons'
 
-import { MotiView, MotiText } from 'moti'
+import { AntDesign } from '@expo/vector-icons'
+
+import { MotiText, MotiView } from 'moti'
 
 const statusBarHeight = StatusBar.currentHeight ?
       StatusBar.currentHeight 
-      :StatusBar.currentHeight + 22
+      : StatusBar.currentHeight + 22
 
 
 export default function Header({name}) {
@@ -29,7 +29,6 @@ export default function Header({name}) {
             duration: 1800,
             delay: 2
           }}
-        
         >
           <MotiText style={styles.userName}
             from={{
@@ -37,7 +36,6 @@ export default function Header({name}) {
             }}
             animate={{
               translateX: 0,
-
             }}
             transition={{
                 type: "timing",
@@ -45,9 +43,15 @@ export default function Header({name}) {
                 delay: 800
             }}
           >
-            {name}</MotiText>
+            {name}
+
+          </MotiText>
+          
           <TouchableOpacity activeOpacity={0.9} style={styles.buttonUser}>
-            <Feather name="user" size={27} color="#fff"/>
+            
+              <AntDesign name="user" size={27} color="#fff" />
+
+
           </TouchableOpacity>
         </MotiView>
       </View>
@@ -64,29 +68,23 @@ const styles = StyleSheet.create({
         paddingBottom: 44,
     },
     content:{
-      flex: 1,
-      alignItems:'center',
-      justifyContent:'center',
-      flexDirection: 'row',
-      justifyContent: 'space-between'
+        flex: 1,
+        alignItems:'center',
+        justifyContent:'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
-
     buttonUser:{
-      width: 44,
-      height: 44,
-      backgroundColor: 'rgba(255,255,255, 0.5)',
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: 44/1
+        width: 44,
+        height: 44,
+        backgroundColor: 'rgba(255,255,255, 0.5)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 22,
     },
     userName:{
-      fontSize: 18,
-      color: "#fff",
-      fontWeight: 'bold'
-
-
+        fontSize: 18,
+        color: "#fff",
+        fontWeight: 'bold'
     }
-
-
-
 })
