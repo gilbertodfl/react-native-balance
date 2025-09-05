@@ -50,10 +50,8 @@ export default function Header({name}) {
             <Feather name="user" size={27} color="#fff"/>
           </TouchableOpacity>
         </MotiView>
-        
       </View>
     )
-
 }
 
 const styles = StyleSheet.create({
@@ -64,8 +62,6 @@ const styles = StyleSheet.create({
         paddingStart: 16,
         paddingEnd: 16,
         paddingBottom: 44,
-        
-
     },
     content:{
       flex: 1,
